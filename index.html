@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hey   
+ Love!</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data/Furfur.png">
+</head>
+<body>
+    <header>
+    </header>
+    <main>
+        <div class="video-container">
+            <video controls id="first-video">
+                <source src="data/lv_7411023022485818680_20241009174710.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="message-container">
+            <div class="popup" id="first-video-popup">
+                <p>Do you want to watch the first clip?</p>
+                <button id="first-video-yes-button">Yes</button>
+                <button id="first-video-no-button">No</button>
+            </div>
+            <div class="card" style="display: none;">
+                <div class="card-content">
+                    <h1>Happy Birthday!</h1>
+                    <p><h2>More birthdays to come Rie! I hope that you will always prioritize yourself more than anyone else. I wish you all the best.</h2></p>
+                    <img src="data/kiss.gif" alt="picture">
+                </div>
+            </div>
+        </div>
+        <div class="second-video-container">
+            <video controls id="second-video">
+                <source src="data/lv_7398077063028133137_20241008153614.mp4" type="video/mp4">
+            </video>
+        </div>
+    </main>
+    <footer>
+    </footer>
+</body>
+<script>
+    // Get the first and second video elements, popup elements, and card element
+    const firstVideo = document.getElementById('first-video');
+    const secondVideo = document.getElementById('second-video');
+    const firstVideoPopup = document.getElementById('first-video-popup');
+    const secondVideoPopup = document.getElementById('second-video-popup');
+    const firstVideoYesButton = document.getElementById('first-video-yes-button');
+    const firstVideoNoButton = document.getElementById('first-video-no-button');
+    const secondVideoYesButton = document.getElementById('second-video-yes-button');
+    const secondVideoNoButton = document.getElementById('second-video-no-button');
+    const card = document.querySelector('.card');
+    const cardContent = card.querySelector('.card-content');
+
+    // Show the first video popup and hide both videos initially
+    firstVideoPopup.style.display = 'block';
+    firstVideo.style.display = 'none';
+    secondVideo.style.display = 'none';
+
+    // Handle button clicks
+    firstVideoYesButton.addEventListener('click', () => {
+        firstVideoPopup.style.display = 'none';
+        firstVideo.style.display = 'block';
+        firstVideo.play();
+        firstVideo.addEventListener('ended', () => {
+            firstVideo.style.display = 'none';
+            card.style.display = 'block';
+            cardContent.style.display = 'flex';
+            secondVideoPopup.style.display = 'block';
+            // Add animation to the card here (e.g., using CSS or JavaScript)
+        });
+    });
+
+    firstVideoNoButton.addEventListener('click', () => {
+        firstVideoPopup.textContent = "Are you really sure you just gonna ignore this, love?";
+    });
+
+    secondVideoYesButton.addEventListener('click', () => {
+        secondVideoPopup.style.display = 'none';
+        secondVideo.style.display = 'block';
+        secondVideo.play();
+        secondVideo.addEventListener('ended', () => {
+            card.style.display = 'block';
+            cardContent.style.display = 'flex';
+            // Add animation to the card here (e.g., using CSS or JavaScript)
+        });
+    });
+
+    secondVideoNoButton.addEventListener('click', () => {
+        secondVideoPopup.textContent = "Are you really sure you just gonna ignore this, love?";
+    });
+</script>
+</html>
